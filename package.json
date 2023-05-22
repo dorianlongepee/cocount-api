@@ -1,0 +1,30 @@
+{
+  "name": "tricount_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "dev": "tsc -w",
+    "serve": "supervisor server"
+  },
+  "author": "Dorian Longépée",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "helmet": "^7.0.0",
+    "mongoose": "^6.6.3",
+    "mongoose-unique-validator": "^3.1.0",
+    "morgan": "^1.10.0",
+    "supervisor": "^0.12.0",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0"
+  }
+}
