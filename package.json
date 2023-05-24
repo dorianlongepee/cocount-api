@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .ts",
+    "start": "run-s tab:dev tab:serve open:page",
     "dev": "tsc -w",
-    "serve": "supervisor server"
+    "serve": "supervisor app",
+    "tab:dev": "ttab -t 'TS compiler' npm run dev",
+    "tab:serve": "ttab -t 'Run app' npm run serve",
+    "open:page": "open http://localhost:8080/api/v1"
   },
   "author": "Dorian Longépée",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-mongo-sanitize": "^2.2.0",
     "helmet": "^7.0.0",
@@ -25,6 +30,8 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
-    "eslint": "^8.26.0"
+    "eslint": "^8.26.0",
+    "npm-run-all": "^4.1.5",
+    "ttab": "^0.8.0"
   }
 }
