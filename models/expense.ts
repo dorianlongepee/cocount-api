@@ -26,6 +26,10 @@ const expenseSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
+    refunded: {
+        type: Boolean,
+        default: false
+    }
 })
 
 export const ExpenseModel = mongoose.model("Expense", expenseSchema);
