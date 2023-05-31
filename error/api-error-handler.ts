@@ -1,6 +1,7 @@
 import ApiError from "./ApiError";
 
-export default function apiErrorHandler(err, req, res) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function apiErrorHandler(err, req, res, next) {
     console.error(err);
 
     if (err instanceof ApiError) {
