@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "run-s tab:dev tab:serve open:page",
     "dev": "tsc -w",
-    "serve": "supervisor app",
-    "tab:dev": "ttab -t 'TS compiler' npm run dev",
-    "tab:serve": "ttab -t 'Run app' npm run serve",
-    "open:page": "open http://localhost:8080/api/v1"
+    "serve": "supervisor app"
   },
   "author": "Dorian Longépée",
   "license": "ISC",
@@ -33,8 +29,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
-    "eslint": "^8.26.0",
-    "npm-run-all": "^4.1.5",
-    "ttab": "^0.8.0"
+    "eslint": "^8.26.0"
   }
 }
