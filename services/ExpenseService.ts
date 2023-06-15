@@ -1,25 +1,13 @@
 import {Expense} from "../types/expense";
 import {ExpenseModel} from "../models/expense";
 import ApiError from "../error/ApiError";
-import {GroupModel} from "../models/group";
+
 
 export default class ExpenseService {
     public static async createExpense(expense: Expense) {
-        const newExpense = new ExpenseModel({
-            name: expense.name,
-            amount: expense.amount,
-            paidBy: expense.paidBy,
-            beneficiaries: expense.beneficiaries,
-            group: expense.group,
-            date: expense.date,
-            refunded: expense.refunded
-        })
         try {
-            await newExpense.save();
-            await GroupModel.findByIdAndUpdate(
-                expense.group,
-                {$push: {expenses: newExpense._id}}
-            )
+            await ExpenseModel.create(expense);
+            return ExpenseModel.find({name: expense.name})
         } catch (e) {
             throw ApiError.internal("Something went wrong during expense creation")
         }
@@ -27,17 +15,17 @@ export default class ExpenseService {
 
     public static async getExpense(id: string) {
         try {
-            return ExpenseModel.findById(id);
+            return ExpenseModel.findById(id).populate('paidBy').populate('beneficiaries').populate('category');
         } catch (e) {
             throw ApiError.notFound("Expense not found")
         }
     }
 
-    public static async getExpensesByGroup(groupId: string) {
+    public static async getExpenses() {
         try {
-            return ExpenseModel.find({group: groupId});
+            return ExpenseModel.find().populate('paidBy').populate('beneficiaries').populate('category').sort({createdAt: "asc"});
         } catch (e) {
-            throw ApiError.notFound("Expense not found")
+            throw ApiError.notFound("No expenses found")
         }
     }
 
@@ -63,13 +51,5 @@ export default class ExpenseService {
         } catch (e) {
             throw ApiError.notFound("Expense not found")
         }
-    }
-
-    public static async getExpensesByUserAndGroup(userId: string, groupId: string) {
-        return ExpenseModel.find({$or: [{paidBy: userId}, {beneficiaries: userId}], group: groupId});
-    }
-
-    public static async addBenefiaries(id: string, beneficiaries: string[]) {
-        return ExpenseModel.findByIdAndUpdate(id, {beneficiaries: beneficiaries});
     }
 }

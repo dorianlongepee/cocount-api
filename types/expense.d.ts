@@ -1,5 +1,6 @@
 export type Expense = {
     name: string;
+    category: string;
     amount: number;
 
     /*
@@ -14,16 +15,9 @@ export type Expense = {
     beneficiaries: string[];
 
     /*
-     * Group id of the group to which the expense belongs
-     */
-    group: string;
-
-    /*
-     * Date of the expense
-     * Default value is the current date
-     * Format: YYYY-MM-DD
-     * Example: 2020-12-31
+     * Timestamp of the expense
      */
     date?: string;
+
     refunded?: boolean;
 }

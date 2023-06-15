@@ -5,6 +5,11 @@ const expenseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+    },
     amount: {
         type: Number,
         min: 0,
@@ -12,24 +17,19 @@ const expenseSchema = new mongoose.Schema({
     },
     paidBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     beneficiaries: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
-    group: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Group'
-    },
-    date: {
-        type: Date,
-        required: true,
-    },
     refunded: {
         type: Boolean,
         default: false
     }
+}, {
+    timestamps: true
 })
 
 export const ExpenseModel = mongoose.model("Expense", expenseSchema);

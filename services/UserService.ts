@@ -19,15 +19,15 @@ export default class UserService {
         return UserModel.findById(id);
     }
 
-    static async getUserGroups(id: string) {
-        return UserModel.find({id}, {groups: 1}).populate('groups');
-    }
-
     static async updateUserInfos(id: string, user: User) {
         return UserModel.findByIdAndUpdate(id, user);
     }
 
     static async deleteUser(id: string) {
         return UserModel.findByIdAndDelete(id);
+    }
+
+    static async getUsers() {
+        return UserModel.find();
     }
 }
