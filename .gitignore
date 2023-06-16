@@ -4,6 +4,9 @@ package-lock.json
 /dist
 .env
 
+*.js
+*.js.map
+
 
 # local env files
 .env.local

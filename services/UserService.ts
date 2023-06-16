@@ -12,7 +12,8 @@ export default class UserService {
             lastname: user.lastname,
             email: user.email,
         })
-        return await newUser.save();
+        await newUser.save();
+        return UserModel.findOne({email: user.email});
     }
 
     static async getUserInfos(id: string) {
