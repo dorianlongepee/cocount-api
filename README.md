@@ -38,8 +38,17 @@ Compiler le TS
 npm run dev
 ```
 
-Lancer le serveur node
+Lancer le serveur node dans un autre terminal/onglet
+Attention, des fois, il crash et se relance en boucle (je n'ai pas trouvé pourquoi). Il faut alors drop la collection (facilement faisable avec MongoDB Compass) et relancer cette même commande.
 
 ```bash
 npm run serve
+```
+
+Une fois que le serveur est lancé, vous pouvez observer ces trois lignes dans la console:
+
+```bash
+MongoDB Intialized
+Express Intialized
+Your server is ready on port 8080
 ```

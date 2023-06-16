@@ -17,9 +17,3 @@ const userSchema = new Schema({
 });
 
 export const UserModel = mongoose.model("User", userSchema);
-
-UserModel.insertMany({
-  firstname: "John",
-  lastname: "Doe",
-  email: "johndoe@gmail.com",
-});
