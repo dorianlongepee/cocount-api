@@ -1,35 +1,40 @@
 import mongoose from "mongoose";
 
-const expenseSchema = new mongoose.Schema({
+const expenseSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
+      unique: true,
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
     },
     amount: {
-        type: Number,
-        min: 0,
-        required: true
+      type: Number,
+      min: 0,
+      required: true,
     },
     paidBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    beneficiaries: [{
+    beneficiaries: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
+        ref: "User",
+      },
+    ],
     refunded: {
-        type: Boolean,
-        default: false
-    }
-}, {
-    timestamps: true
-})
+      type: Boolean,
+      default: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 export const ExpenseModel = mongoose.model("Expense", expenseSchema);

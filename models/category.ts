@@ -9,13 +9,10 @@ const categorySchema = new mongoose.Schema({
 
 export const CategoryModel = mongoose.model("Category", categorySchema);
 
-CategoryModel.remove({});
-
 CategoryModel.insertMany([
   { name: "Restauration" },
   { name: "Hébergement" },
   { name: "Transport" },
   { name: "Loisirs" },
   { name: "Shopping" },
-  { name: "Autres" },
 ]);

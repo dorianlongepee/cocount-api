@@ -18,8 +18,6 @@ const userSchema = new Schema({
 
 export const UserModel = mongoose.model("User", userSchema);
 
-UserModel.remove({});
-
 UserModel.insertMany({
   firstname: "John",
   lastname: "Doe",
