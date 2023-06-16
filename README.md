@@ -4,9 +4,7 @@
 mongoose, qui a l’avantage d’être rédigé rapidement et utilise les documents mongo, permettant de récupérer les donnes
 rapidement.
 
-Si l’application devait être continuée, une refactorisation pour passer en SQL serait judicieuse, en utilisant Nest.js
-par exemple. Notamment dans l’optique où beaucoup plus de relations entre tables peuvent être crées.
-La gestion des erreurs actuelle n'est pas optimisée et mériterait d'être revue.
+Si l’application devait être continuée, une refactorisation pour passer en SQL serait judicieuse, en utilisant Nest.js par exemple. Notamment dans l’optique où beaucoup plus de relations entre tables peuvent être crées. Étant la première fois que j’utilisais Mongo, j’ai fait l’erreur de penser la base comme en SQL.
 
 ## Installation
 
